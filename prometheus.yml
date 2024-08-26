@@ -1,0 +1,44 @@
+# Global configuration
+global:                                                     
+  scrape_interval: 15s
+  evaluation_interval: 15s
+# Alertmanager Configuration
+alerting:                                                   
+  alertmanagers:
+    - static_configs:
+        - targets:
+            - 35.196.141.38:9093
+ # Rule Files
+rule_files:                                                
+  - alert_rules.yml
+
+# Scrape Configuration
+
+scrape_configs:
+  - job_name: prometheus
+    static_configs:
+      - targets:
+          - localhost:9090
+ # Node Exporter
+  - job_name: node_exporter
+    static_configs:
+      - targets:
+          - 34.73.115.81:9100
+ # Blackbox Exporter
+  - job_name: blackbox
+    metrics_path: /probe
+    params:
+      module:
+        - http_2xx
+    static_configs:
+      - targets:
+          - http://prometheus.io
+          - https://prometheus.io
+          - http://34.73.115.81:8080/
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: __param_target
+      - source_labels: [__param_target]
+        target_label: instance
+      - target_label: __address__
+        replacement: 35.196.141.38:9115
