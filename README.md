@@ -9,6 +9,7 @@
 - Ensure you have `wget` and `tar` installed on both VMs.
 - Ensure you have appropriate permissions to download, extract, and run these binaries.
 - Replace `<version>` with the appropriate version number you wish to download.
+- Make sure you have enable the firewall( To access the specific port).
 
 
 #### In this project we have to use two instance one for web app and node exporter and another one is for Monitoring tools (Prometheus, Alert Manager and Black box exporter)
@@ -22,7 +23,7 @@
 
 2. **Extract Node Exporter**
    ```bash
-   tar xvfz node_exporter-1.8.1.linux-amd64.tar.gz
+   tar -xvf node_exporter-1.8.1.linux-amd64.tar.gz
    ```
 
 3. **Start Node Exporter**
@@ -30,12 +31,20 @@
    cd node_exporter-1.8.1.linux-amd64
    ./node_exporter &
    ```
+![Node Exporter](images/nodeexporter.png)
 
 **Clone your web app into instance**
 
 ```bash
   git clone "github repo url"
   ```
+**Run your web app**
+- Access it on the browser.
+
+
+#### VM-2 (Prometheus, Alertmanager, Blackbox Exporter)
+
+
 
   
 
