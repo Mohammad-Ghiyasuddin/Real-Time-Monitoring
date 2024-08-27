@@ -15,7 +15,7 @@
 #### In this project we have to use two instance one for web app and node exporter and another one is for Monitoring tools (Prometheus, Alert Manager and Black box exporter)
 
 
-![Virtual Machine](Images/vms.png)
+![Virtual Machine](images/vms.png)
 
 #### VM-1 
 
@@ -34,7 +34,7 @@
    cd node_exporter-1.8.1.linux-amd64
    ./node_exporter &
    ```
-![Node Exporter](Images/nodeexporter.png)
+![Node Exporter](images/nodeexporter.png)
 
 **Clone your web app into instance**
 
@@ -43,7 +43,7 @@
   ```
 **Run your web app**
 - Access it on the browser.
-![Website](Images/webapp.png)
+![Website](images/webapp.png)
 
 #### VM-2 (Prometheus, Alertmanager, Blackbox Exporter)
 
@@ -68,7 +68,7 @@
    ./prometheus --config.file=prometheus.yml &             # '&' for running in background
    ```
 
-![Prometheus](Images/prometheus.png) 
+![Prometheus](images/prometheus.png) 
 
 ##### Alertmanager
 1. **Download Alertmanager**
@@ -107,7 +107,7 @@
    cd blackbox_exporter-0.25.0.linux-amd64
    ./blackbox_exporter &
    ```
-![Black Box Exporter](Images/blackbox.png)
+![Black Box Exporter](images/blackbox.png)
 
 
 ### Notes:
@@ -117,16 +117,16 @@
 
 **Website Healthy**
 
-![Website healthy status](Images/instancehealthy.png)
+![Website healthy status](images/instancehealthy.png)
 
 **Instance Down**
-![When website down](Images/instancedown.png)
+![When website down](images/instancedown.png)
 
 **Service Down**
-![When service down](Images/instdown.png)
+![When service down](images/instdown.png)
 
 **When service goes down for mention duration you will get alert mail**
-![Mail notification when service goes down](Images/downmail.png)
+![Mail notification when service goes down](images/downmail.png)
 
 
 
