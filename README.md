@@ -14,6 +14,9 @@
 
 #### In this project we have to use two instance one for web app and node exporter and another one is for Monitoring tools (Prometheus, Alert Manager and Black box exporter)
 
+
+![Virtual Machine](Images/vms.png)
+
 #### VM-1 
 
 1. **Download Node Exporter**
@@ -31,7 +34,7 @@
    cd node_exporter-1.8.1.linux-amd64
    ./node_exporter &
    ```
-![Node Exporter](images/nodeexporter.png)
+![Node Exporter](Images/nodeexporter.png)
 
 **Clone your web app into instance**
 
@@ -40,9 +43,90 @@
   ```
 **Run your web app**
 - Access it on the browser.
-
+![Website](Images/webapp.png)
 
 #### VM-2 (Prometheus, Alertmanager, Blackbox Exporter)
+
+##### Prometheus
+1. **Download Prometheus**
+   ```bash
+   wget https://github.com/prometheus/prometheus/releases/download/v2.52.0/prometheus-2.52.0.linux-amd64.tar.gz
+   ```
+
+2. **Extract Prometheus**
+   ```bash
+   tar xvfz prometheus-2.52.0.linux-amd64.tar.gz
+   ```
+
+3. **Configure prometheus.yml**
+   ```bash
+   vi prometheus.yml               ## write the prometheus.yml code
+  ```
+4. **Start Prometheus**
+   ```bash
+   cd prometheus-2.52.0.linux-amd64
+   ./prometheus --config.file=prometheus.yml &             # '&' for running in background
+   ```
+
+![Prometheus](Images/prometheus.png) 
+
+##### Alertmanager
+1. **Download Alertmanager**
+   ```bash
+   wget https://github.com/prometheus/alertmanager/releases/download/v0.27.0/alertmanager-0.27.0.linux-amd64.tar.gz
+   ```
+
+2. **Extract Alertmanager**
+   ```bash
+   tar xvfz alertmanager-0.27.0.linux-amd64.tar.gz
+   ```
+3. **Configure alert_rules**
+    ```bash
+    nano alertmanager.yml                ## write the alertmanager.yml file inside alertmanager
+    ```
+
+4. **Start Alertmanager**
+   ```bash
+   cd alertmanager-0.27.0.linux-amd64
+   ./alertmanager --config.file=alertmanager.yml &
+   ```
+
+##### Blackbox Exporter
+1. **Download Blackbox Exporter**
+   ```bash
+   wget https://github.com/prometheus/blackbox_exporter/releases/download/v0.25.0/blackbox_exporter-0.25.0.linux-amd64.tar.gz
+   ```
+
+2. **Extract Blackbox Exporter**
+   ```bash
+   tar xvfz blackbox_exporter-0.25.0.linux-amd64.tar.gz
+   ```
+
+3. **Start Blackbox Exporter**
+   ```bash
+   cd blackbox_exporter-0.25.0.linux-amd64
+   ./blackbox_exporter &
+   ```
+![Black Box Exporter](Images/blackbox.png)
+
+
+### Notes:
+- The `&` at the end of each command ensures the process runs in the background.
+- Ensure that you have configured the `prometheus.yml` and `alertmanager.yml` configuration files correctly before starting the services.
+- Adjust the firewall and security settings to allow the necessary ports (typically 9090 for Prometheus, 9093 for Alertmanager, 9115 for Blackbox Exporter, and 9100 for Node Exporter) to be accessible.
+
+**Website Healthy**
+
+![Website healthy status](Images/instancehealthy.png)
+
+**Instance Down**
+![When website down](Images/instancedown.png)
+
+**Service Down**
+![When service down](Images/instdown.png)
+
+**When service goes down for mention duration you will get alert mail**
+![Mail notification when service goes down](Images/downmail.png)
 
 
 
