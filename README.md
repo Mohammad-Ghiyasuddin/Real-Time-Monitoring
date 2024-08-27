@@ -1,5 +1,6 @@
 # Real-Time-Monitoring
-
+**Architecture**
+![Architecture](images/monitoring%20diag.png)
 #### Prerequisites
 
 - Prometheus - is an open-source tool that helps monitor and alert you by collecting, storing, and analyzing data over time from applicaion and infrastructure.
